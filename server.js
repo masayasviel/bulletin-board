@@ -1,44 +1,21 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 
 const PORT = 3000;
-const mysqlSetting = {
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "my-nodeapp-db"
-};
 
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(express.static("public"));
 
 app.get("/", (request, response) => {
-    const connection = mysql.createConnection(mysqlSetting);
-    connection.connect();
-    connection.query("SELECT * FROM mydata", (error, result)=>{
-        if (error == null) {
-            response.send(JSON.stringify({content: result}));
-        }
-    });
-    connection.end();
+    res.sendFile(__dirname + "/public/index.html");
 });
 
-app.post("/add.json", (request, response) => {
-    const data = {
-        "fullname": request.body.fullname,
-        "username": request.body.username,
-        "message": request.body.message
-    };
-    const connection = mysql.createConnection(mysqlSetting);
-    connection.connect();
-    connection.query("INSERT INTO mydata SET ?", data, (error, result)=>{
-        response.redirect("/");
+io.on("connection", socket => {
+    console.log("user connect!");
+    socket.on("server_to_client", data => {
+        socket.broadcast.emit("server_to_client", data);
     });
-    connection.end();
 });
 
-const server = app.listen(PORT, ()=>console.log("Server is running!"));
+http.listen(PORT, ()=>console.log("please access : http://localhost:" + PORT));

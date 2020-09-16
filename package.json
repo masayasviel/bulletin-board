@@ -1,26 +1,25 @@
 {
-  "name": "-bulletin-board",
+  "name": "bulletin-board",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "socket_ioで簡単に掲示板",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/masayasviel/-bulletin-board.git"
+    "url": "git+https://github.com/masayasviel/bulletin-board.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/masayasviel/-bulletin-board/issues"
+    "url": "https://github.com/masayasviel/bulletin-board/issues"
   },
-  "homepage": "https://github.com/masayasviel/-bulletin-board#readme",
+  "homepage": "https://github.com/masayasviel/bulletin-board#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "http": "0.0.1-security",
+    "socket.io": "^2.3.0"
   }
 }
