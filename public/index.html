@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/style.css">
     <title>test</title>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./js/canvas.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
 </head>
 <body>
     <h1>Chat Room</h1>
     <p>prease send message!</p>
     <div>
-        <input id="textBox" type="text" value="">
-        <input id="sendButton" type="button" value="send">
+        <div>
+            <canvas id="canvas"></canvas>
+        </div>
+        <div>
+            <input type="color" id="colorPallet">
+            <input type="button" id="clearCanvasButton" value="clear">
+        </div>
+        <div>
+            <input id="textBox" type="text" value="">
+            <input id="sendMessageButton" type="button" value="sendMessage">
+            <input id="sendImageButton" type="button" value="sendImage">
+        </div>
     </div>
     <div id="message"></div>
 </body>
