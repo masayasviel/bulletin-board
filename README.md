@@ -75,4 +75,5 @@ http://localhost:8080/
 # 参考
 
 - [TypeScript + Node.js プロジェクトのはじめかた2020](https://qiita.com/notakaos/items/3bbd2293e2ff286d9f49)
+- [sequelize Getting started](https://sequelize.org/v5/manual/getting-started.html#synchronizing-the-model-with-the-database)
 - [docker-compose でMySQL環境簡単構築](https://qiita.com/A-Kira/items/f401aea261693c395966)
