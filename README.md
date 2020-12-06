@@ -7,16 +7,6 @@
 - ts-node v9.1.0
 - tsc v4.0.3
 
-# Installation
-
-- @types/node
-- express
-- @types/express
-- sequelize
-- mysql2
-- @types/validator
-- @types/bluebird
-
 # Usage
 
 ## Run
@@ -75,5 +65,5 @@ http://localhost:8080/
 # 参考
 
 - [TypeScript + Node.js プロジェクトのはじめかた2020](https://qiita.com/notakaos/items/3bbd2293e2ff286d9f49)
-- [sequelize Getting started](https://sequelize.org/v5/manual/getting-started.html#synchronizing-the-model-with-the-database)
+- [sequelize](https://sequelize.org/v5/index.html)
 - [docker-compose でMySQL環境簡単構築](https://qiita.com/A-Kira/items/f401aea261693c395966)
