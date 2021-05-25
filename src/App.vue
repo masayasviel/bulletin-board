@@ -20,20 +20,38 @@
 
     <v-main app>
       <v-btn
-        class="mx-2"
+        class="mx-2 post-btn"
         color="blue"
         dark
         center
         fab
         fixed
         right
-        @click="showCreateForm"
+        v-if="uid !== ''"
+        @click="displayForm = true"
       >
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
-      <v-dialog v-model="displayForm" max-width="500px">
-        <new-post/>
-      </v-dialog>
+      <new-post
+        :displayForm="displayForm"
+        @close-dialog="displayForm = false"
+        @postNewImage="postNewImage"
+      />
+
+      <v-card
+        v-for="param in dataList" :key="param.id"
+        max-width="374"
+        class="mx-auto my-12"
+      >
+        <v-img
+          :src="param.uploadImageUrl"
+          height="250"
+          contain
+        ></v-img>
+        <v-card-text>
+          {{ param.remarks }}
+        </v-card-text>
+      </v-card>
     </v-main>
   </v-app>
 </template>
@@ -52,8 +70,24 @@ export default {
   data: () => ({
     uid: "",
     username: "",
-    displayForm: false
+    displayForm: false,
+    dataList: []
   }),
+
+  mounted() {
+    const db = firebase.firestore();
+    db.collection("images").get()
+      .then((querySnapshot) => {
+        this.dataList.length = 0;
+        querySnapshot.forEach(doc => {
+          const data = doc.data();
+          this.dataList.push({
+            id: doc.id,
+            ...data
+          });
+        });
+      });
+  },
 
   methods: {
     login() {
@@ -68,9 +102,24 @@ export default {
           console.error(error);
         });
     },
-    showCreateForm() {
-      this.displayForm = true
+    postNewImage(param) {
+      const filename = param.inputImage.name
+      const db = firebase.firestore();
+      db.collection("images").doc(filename).set({
+        uploadImageUrl: param.uploadImageUrl,
+        remarks: param.remarks
+      }).then(() => {this.displayForm = false});
     }
   }
 };
 </script>
+
+<style scoped>
+.post-btn {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+v-card {
+  width: 250px;
+}
+</style>
