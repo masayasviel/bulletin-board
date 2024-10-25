@@ -12,7 +12,7 @@
     "firebase": "^8.2.10",
     "firebaseui": "^4.8.0",
     "firebaseui-ja": "^1.0.0",
-    "vue": "^2.6.11",
+    "vue": "^3.0.0",
     "vuetify": "^2.4.0"
   },
   "devDependencies": {
