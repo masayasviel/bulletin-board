@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "firebase": "^8.2.10",
+    "firebase": "^11.0.2",
     "firebaseui": "^4.8.0",
     "firebaseui-ja": "^1.0.0",
     "vue": "^2.6.11",
